@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="..\build\ProductOrder application.props" />
+</Project>
