@@ -16,6 +16,8 @@ namespace ProductOrder_application.Models
         [Required]
         [Range(1, int.MaxValue, ErrorMessage = "Quantity must be greater than 0.")]
         public int Quantity { get; set; }
+        
+        public decimal TotalAmount { get; internal set; }
     }
 }
 //Data validation is good for assisting our system to work with accurate information.
