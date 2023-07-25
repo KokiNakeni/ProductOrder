@@ -12,23 +12,64 @@ namespace ProductOrder_application.Models
             context.Database.EnsureCreated();
 
             if (context.StaffMemberDetails.Any())
-            {
-                return;
-            }
+{
+    return;
+}
 
-            // StaffMemberDetails
-            var staffMembers = new StaffMemberDetails[]
-            {
-                // ... Your existing staff members ...
-            };
+// StaffMemberDetails
+var staffMembers = new StaffMemberDetails[]
+{
+    new StaffMemberDetails
+    {
+        FirstName = "Carson",
+        Surname = "Alexander",
+        StreetAddress = "14 Panfluit Street",
+        Suburb = "Eco Park",
+        Town = "Pretoria",
+        PostalCode = "1620"
+    },
+    new StaffMemberDetails
+    {
+        FirstName = "Koketso",
+        Surname = "Madumo",
+        StreetAddress = "14 Panfluit Street",
+        Suburb = "Eco Park",
+        Town = "Pretoria",
+        PostalCode = "1620"
+    },
+    new StaffMemberDetails
+    {
+        FirstName = "Mabutho",
+        Surname = "Nakeni",
+        StreetAddress = "14 Panfluit Street",
+        Suburb = "Eco Park",
+        Town = "Pretoria",
+        PostalCode = "1620"
+    },
+    new StaffMemberDetails
+    {
+        FirstName = "Moeti",
+        Surname = "Nakeni",
+        StreetAddress = "14 Panfluit Street",
+        Suburb = "Eco Park",
+        Town = "Pretoria",
+        PostalCode = "1620"
+    },
+    new StaffMemberDetails
+    {
+        FirstName = "Moeti",
+        Surname = "Nakeni",
+        StreetAddress = "14 Panfluit Street",
+        Suburb = "Eco Park",
+        Town = "Pretoria",
+        PostalCode = "1620"
+    }
 
-            foreach (var staffMember in staffMembers)
-            {
-                context.StaffMemberDetails.Add(staffMember);
-            }
-
-            context.SaveChanges();
-
+foreach (var staffMember in staffMembers)
+{
+    context.StaffMemberDetails.Add(staffMember);
+            
+    }
             // Products
             string filePath = @"C:\Users\Dell\source\repos\ProductOrder application\ProductOrder application\Images\laptopbags.jpg";
             byte[] imageBytes = null;
@@ -131,31 +172,68 @@ namespace ProductOrder_application.Models
                 context.Products.Add(product);
             }
 
-            context.SaveChanges();
-
-            // Orders
+            // Orders represent each order of each staff member or 2 orders belonging to one staff member 
             var orders = new Order[]
             {
-                // ... Your existing orders ...
+            new Order { StaffId = 1, OrderDate = new DateTime(2023, 7, 15), TotalAmount = 100.50m },
+            new Order { StaffId = 2, OrderDate = new DateTime(2023, 7, 15), TotalAmount = 75.20m },
+            new Order { StaffId = 3, OrderDate = new DateTime(2023, 7, 15), TotalAmount = 50.10m },
+
+                
             };
 
             foreach (var order in orders)
             {
                 context.Orders.Add(order);
             }
-
-            context.SaveChanges();
-
-            // OrderItems
-            var orderItems = new OrderItem[]
+                
+                // OrderItems or cart items, I will be using this to keep track of all the orders in a basket belonging to a staff member, it also breaks the many-to-many relationship between products and order
+                
+           var orderItems = new OrderItem[]
             {
-                // ... Your existing order items ...
+                new OrderItem
+                {
+                    StaffId = 1,
+                    ProductId = 1,
+                    Quantity = 2,
+                    TotalAmount = 50.99m
+                },
+                new OrderItem
+                {
+                    StaffId = 2,
+                    ProductId = 2,
+                    Quantity = 1,
+                    TotalAmount = 25.50m
+                },
+                new OrderItem
+                {
+                    StaffId = 3,
+                    ProductId = 3,
+                    Quantity = 3,
+                    TotalAmount = 75.00m
+                }
             };
 
             foreach (var orderItem in orderItems)
             {
                 context.OrderItems.Add(orderItem);
             }
+
+            context.SaveChanges();
+        }
+    }
+}
+Similar to the previous examples, I've created an OrderItemInitializer class with a static method Initialize. The Initialize method checks if there are any existing records in the OrderItems table. If there are no records, it proceeds to populate the table with the provided dummy data.
+
+Again, make sure to adjust the dummy data according to your requirements, and replace the OrderId and ProductId values with the correct IDs from your Orders and Products tables, respectively.
+
+You can call this method from your DbContext class's OnModelCreating method or from any other appropriate location to initialize the data when the application starts.
+
+
+
+
+
+
 
             context.SaveChanges();
         }
