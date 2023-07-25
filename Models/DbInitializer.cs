@@ -216,7 +216,7 @@ foreach (var staffMember in staffMembers)
 
             foreach (var orderItems in orderItems)
             {
-                context.OrderItems.Add(orderItem);
+                context.OrderItems.Add(orderItems);
             }
 
             context.SaveChanges();
