@@ -189,23 +189,23 @@ foreach (var staffMember in staffMembers)
                 
                 // OrderItems or cart items, I will be using this to keep track of all the orders in a basket belonging to a staff member, it also breaks the many-to-many relationship between products and order
                 
-           var orderItems = new OrderItem[]
+           var orderItems = new OrderItems[]
             {
-                new OrderItem
+                new OrderItems
                 {
                     StaffId = 1,
                     ProductId = 1,
                     Quantity = 2,
                     TotalAmount = 50.99m
                 },
-                new OrderItem
+                new OrderItems
                 {
                     StaffId = 2,
                     ProductId = 2,
                     Quantity = 1,
                     TotalAmount = 25.50m
                 },
-                new OrderItem
+                new OrderItems
                 {
                     StaffId = 3,
                     ProductId = 3,
@@ -214,7 +214,7 @@ foreach (var staffMember in staffMembers)
                 }
             };
 
-            foreach (var orderItem in orderItems)
+            foreach (var orderItems in orderItems)
             {
                 context.OrderItems.Add(orderItem);
             }
@@ -223,19 +223,4 @@ foreach (var staffMember in staffMembers)
         }
     }
 }
-Similar to the previous examples, I've created an OrderItemInitializer class with a static method Initialize. The Initialize method checks if there are any existing records in the OrderItems table. If there are no records, it proceeds to populate the table with the provided dummy data.
 
-Again, make sure to adjust the dummy data according to your requirements, and replace the OrderId and ProductId values with the correct IDs from your Orders and Products tables, respectively.
-
-You can call this method from your DbContext class's OnModelCreating method or from any other appropriate location to initialize the data when the application starts.
-
-
-
-
-
-
-
-            context.SaveChanges();
-        }
-    }
-}
