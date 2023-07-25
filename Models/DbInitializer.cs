@@ -17,7 +17,7 @@ namespace ProductOrder_application.Models
 }
 
 // StaffMemberDetails
-var staffMembers = new StaffMemberDetails[]
+var staffMemberDetails = new StaffMemberDetails[]
 {
     new StaffMemberDetails
     {
@@ -67,7 +67,7 @@ var staffMembers = new StaffMemberDetails[]
 
 foreach (var staffMember in staffMembers)
 {
-    context.StaffMemberDetails.Add(staffMember);
+    context.StaffMemberDetails.Add(staffMemberDetails);
             
     }
             // Products
