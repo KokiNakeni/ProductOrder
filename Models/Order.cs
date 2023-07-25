@@ -19,7 +19,7 @@ namespace ProductOrder_application.Models
         [Required]
         [Range(0.01, double.MaxValue, ErrorMessage = "Total Amount must be greater than 0.")]
         public decimal TotalAmount { get; set; }
-        public int Id { get; internal set; }
+    
     }
 }
  
