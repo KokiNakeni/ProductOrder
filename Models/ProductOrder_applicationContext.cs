@@ -37,6 +37,10 @@ namespace ProductOrder_application.Models
                 .Property(oi => oi.Quantity)
                 .HasColumnType("int");
 
+                modelBuilder.Entity<OrderItems>() // Add the TotalAmount property configuration for OrderItem
+                .Property(oi => oi.TotalAmount)
+                .HasColumnType("decimal(18,2)");
+
             // Add any other entity configurations or property configurations here.
 
         }
