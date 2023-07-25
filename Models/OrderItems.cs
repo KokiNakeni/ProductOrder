@@ -2,7 +2,7 @@
 
 namespace ProductOrder_application.Models
 {
-    public class OrderItem
+    public class OrderItems
     {
         [Key]
          public int Id { get; set; }
